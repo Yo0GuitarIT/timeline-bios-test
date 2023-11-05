@@ -1,36 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# timelineβίος
 
-## Getting Started
+**timelineβίος** 是一個音樂創作的虛擬世界，充滿了無限的音樂冒險和神秘元素。這個專案將啟發您的音樂創作靈感，並提供一個充滿挑戰和美麗音樂的旅程。
 
-First, run the development server:
+在**timelineβίος**中，每個音符都是一段故事，每首曲調都是一場冒險。您可以探索各種音樂風格，從柔和的旋律到壯麗的交響樂，從悲傷的旋律到充滿希望的和聲。每首歌都是一個新的冒險，每個音符都是一個故事的一部分。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**timelineβίος**的目標是激發您的創作靈感，讓您自由地表達自己，將音樂帶入這個奇幻的世界。無論您是新手還是經驗豐富的音樂家，這裡都歡迎您，等待您一同創作，用音樂傳達故事。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+加入**timelineβίος**，讓音樂成為您的冒險之旅。探索聲音的奇幻世界，並將您的音樂故事分享給全世界。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+開始您的音樂冒險，現在就加入**timelineβίος**！
