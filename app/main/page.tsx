@@ -1,38 +1,48 @@
 import Link from "next/link";
 import { ModeToggle } from "@/components/Mode-toggle";
 import { Button } from "@/components/ui/button";
+import PlayButton from "@/components/shared/PlayButton";
+import RecordButton from "@/components/shared/RecordButton";
+import BackwardButton from "@/components/shared/BackwardButton";
+import BackSongButton from "@/components/shared/BackSongButton";
+import ForwardButton from "@/components/shared/ForwardButton";
 
 export default function MainPage() {
   return (
     <>
-      <div className="w-screen h-screen ">
-        <div className="w-full h-8 border flex justify-center items-center">
+      <div
+        id="studio"
+        className="flex flex-col justify-between w-screen h-screen "
+      >
+        <div
+          id="studioHead"
+          className="w-full h-12 border flex justify-center items-center"
+        >
           navBar
         </div>
-        <div className="w-auto h-auto flex">
-          <div className="w-48 h-100 border flex justify-center items-center">
-            trackInfo
+        <div id="studioMain" className="w-full h-full flex flex-col ">
+          <div className="flex">
+            <div className="w-72 h-20 border">emptry</div>
+            <div className="w-full border">timeline</div>
           </div>
-          <div className="w-full">
-            <div className="w-full h-4 border flex justify-center items-center">
-              timeLine
-            </div>
-            <div className="w-full h-32 border flex justify-center items-center bg-green-300">
-              track
-            </div>
-            <div className="w-full h-32 border flex justify-center items-center bg-orange-300">
-              track
-            </div>
-            <div className="w-full h-32 border flex justify-center items-center bg-blue-300">
-              track
-            </div>
+          <div className="flex h-full">
+            <div className="w-72 h-full border">trackInfo</div>
+            <div className="w-full border ">audio</div>
           </div>
         </div>
-        <div className="flex justify-around mt-4">
+        <div
+          id="studioFooter"
+          className="w-full h-16 border flex items-center justify-center box-border p-3"
+        >
+          <BackSongButton />
+          <BackwardButton />
+          <ForwardButton />
+          <PlayButton />
+          <RecordButton />
+          {/* <ModeToggle />
           <Link href="/">
             <Button>Home</Button>
-          </Link>
-          <ModeToggle />
+          </Link> */}
         </div>
       </div>
     </>
