@@ -1,14 +1,13 @@
-"use client";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "../ui/button";
 
-function PlayButton() {
+function PlayButton({ onPlay }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlayClick = () => {
-    setIsPlaying(!isPlaying);
-    console.log(isPlaying ? "Pause" : "Play");
+    setIsPlaying((prevIsPlaying) => !prevIsPlaying);
+    onPlay(!isPlaying);
   };
 
   return (
