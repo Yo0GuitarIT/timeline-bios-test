@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-40 px-96 gap-5">
+    <main className="flex min-h-screen flex-col items-center justify-between p-36 gap-10">
       <h1 className="text-7xl">timelineβίος</h1>
-      <div className="flex flex-col justify-center items-center gap-10">
+      <div className="flex flex-col justify-center items-center gap-3">
         <p>
           一個音樂創作的虛擬世界，充滿了無限的音樂冒險和神秘元素。這個專案將啟發您的音樂創作靈感，
           並提供一個充滿挑戰和美麗音樂的旅程。
@@ -22,9 +22,11 @@ export default function Home() {
         <p>
           讓音樂成為您的冒險之旅。探索聲音的奇幻世界，並將您的音樂故事分享給全世界。
         </p>
-        <Link href="/main"><Button> Start</Button></Link>
+        <Link href="/main">
+          <Button> Start</Button>
+        </Link>
+        <ModeToggle />
       </div>
-      <ModeToggle />
     </main>
   );
 }

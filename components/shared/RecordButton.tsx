@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 export default function RecordButton() {
   return (
-    <div className="border cursor-pointer">
+    <Button variant="secondary" size="icon">
       <Image
         src="/button-record.svg"
         alt="play button"
@@ -10,6 +11,6 @@ export default function RecordButton() {
         height={30}
         // priority={true}
       />
-    </div>
+    </Button>
   );
 }
