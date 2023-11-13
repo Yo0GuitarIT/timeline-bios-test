@@ -1,7 +1,7 @@
 // TimeAxis.js
 
 function TimeAxis() {
-  const secondsInTimeline = 16; // 時間軸總秒數
+  const secondsInTimeline = 16; 
 
   const renderTimeTicks = () => {
     const ticks = [];
@@ -22,7 +22,7 @@ function TimeAxis() {
             backgroundColor: "black",
           }}
         ></div>
-      ); //time-tick
+      ); 
     }
     return ticks;
   };

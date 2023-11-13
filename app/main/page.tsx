@@ -1,42 +1,69 @@
-"use client"
+"use client";
 import Link from "next/link";
-
 import { useState, useEffect } from "react";
-
 import { ModeToggle } from "@/components/Mode-toggle";
 import { Button } from "@/components/ui/button";
-import PlayButton from "@/components/shared/PlayButton";
-import RecordButton from "@/components/shared/RecordButton";
-import BackwardButton from "@/components/shared/BackwardButton";
-import BackSongButton from "@/components/shared/BackSongButton";
-import ForwardButton from "@/components/shared/ForwardButton";
 import TimeAxis from "@/components/TimeAxis";
+import PlayControls from "@/components/PlayControls";
 
 function MainPage() {
   const [isPlaying, setPlaying] = useState(false);
   const [PlaybackProgress, setPlaybackProgress] = useState(0);
+  const playTime: number = Number(((PlaybackProgress / 100) * 16).toFixed(2));
 
-  const handlePlay = (isPlaying:boolean) => {
-    console.log(isPlaying ? "Play" : "Pause");
+  const handlePlay = (isPlaying: boolean) => {
     setPlaying(isPlaying);
   };
 
   useEffect(() => {
-    let interval:NodeJS.Timeout|undefined;
-
+    let interval: NodeJS.Timeout | undefined;
     if (isPlaying) {
-      const percentageIncreasePerSecond = (1 / 16) * 100;
+      const percentageIncreasePerSecond = 1 / 16;
       interval = setInterval(() => {
         setPlaybackProgress(
           (prev) => (prev + percentageIncreasePerSecond) % 100
         );
-      }, 500);
+      }, 10);
     } else {
       clearInterval(interval);
     }
 
     return () => clearInterval(interval);
   }, [isPlaying]);
+
+  const handleBackSong = () => {
+    setPlaybackProgress(0);
+  };
+
+  const handleBackward = () => {
+    const currentIntegerTime = Math.floor(playTime);
+    if (currentIntegerTime === 0) {
+      setPlaybackProgress(0);
+    } else setPlaybackProgress((currentIntegerTime - 1) * (1 / 16) * 100);
+  };
+
+  const handleForward = () => {
+    const currentIntegerTime = Math.floor(playTime);
+    if (currentIntegerTime === 16) {
+      setPlaybackProgress((currentIntegerTime / 16) * 100);
+    } else setPlaybackProgress((currentIntegerTime + 1) * (1 / 16) * 100);
+  };
+
+  const [trackCount, setTrackCount] = useState(1); // 新增音軌數量的狀態
+  const [tracks, setTracks] = useState([
+    { id: 1, name: "Track 1", audio: "Have fun!" },
+  ]);
+
+  const addTrack = () => {
+    console.log("addTrack");
+    const newTrack = {
+      id: trackCount + 1,
+      name: `Track ${trackCount + 1}`,
+      audio: "Add sound~",
+    };
+    setTrackCount(trackCount + 1);
+    setTracks([...tracks, newTrack]);
+  };
 
   return (
     <>
@@ -46,17 +73,20 @@ function MainPage() {
       >
         <div
           id="studioHead"
-          className="w-full h-16  flex justify-around items-center bg-yellow-100 "
+          className="w-full h-16  flex justify-around items-center bg-background"
         >
-          <p>120bpm</p>
-
-          <div className="flex gap-3">
-            <BackSongButton />
-            <BackwardButton />
-            <ForwardButton />
-            <PlayButton onPlay={handlePlay} />
-            <RecordButton />
+          <div className="w-28 h-12 flex p-1 items-center ">
+            <h1 className="text-lg text-primary-foreground">
+              Time: {playTime}
+            </h1>
           </div>
+
+          <PlayControls
+            clickPlay={handlePlay}
+            clickBackSong={handleBackSong}
+            clickBackward={handleBackward}
+            clickForward={handleForward}
+          />
 
           <div className="flex gap-3">
             <ModeToggle />
@@ -65,10 +95,21 @@ function MainPage() {
             </Link>
           </div>
         </div>
+
         <div id="studioMain" className="w-full h-full flex p-2 box-border">
           <div className="w-72 h-full flex flex-col ">
-            <div className="w-full h-20 "></div>
-            <div className="w-full h-full bg-blue-200">trackInfo</div>
+            <div className="w-full h-20 flex justify-center items-center">
+              <Button variant={"destructive"} size={"sm"} onClick={addTrack}>
+                Add New Track
+              </Button>
+            </div>
+            <div className="w-full h-full">
+              {tracks.map((track) => (
+                <div key={track.id} className="w-full h-24 border">
+                  {track.name}
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="w-full h-full flex flex-col relative">
@@ -80,6 +121,7 @@ function MainPage() {
                 transform: "translateX(-50%)",
               }}
             ></div>
+
             <div className="w-full h-20">
               <div id="timelineController" className="w-full h-2/3 ">
                 <TimeAxis />
@@ -89,7 +131,13 @@ function MainPage() {
                 Timeline Parts
               </div>
             </div>
-            <div className="w-full h-full bg-slate-300"> Audio</div>
+            <div className="w-full h-full ">
+              {tracks.map((track) => (
+                <div key={track.id} className="w-full h-24 border-solid border">
+                  {track.audio}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

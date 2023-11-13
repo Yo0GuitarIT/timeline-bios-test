@@ -2,12 +2,12 @@ import Image from "next/image";
 import { useState } from "react";
 import { Button } from "../ui/button";
 
-function PlayButton({ onPlay }) {
+function PlayButton({ clickPlay }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlayClick = () => {
     setIsPlaying((prevIsPlaying) => !prevIsPlaying);
-    onPlay(!isPlaying);
+    clickPlay(!isPlaying);
   };
 
   return (
@@ -24,3 +24,5 @@ function PlayButton({ onPlay }) {
 }
 
 export default PlayButton;
+
+//

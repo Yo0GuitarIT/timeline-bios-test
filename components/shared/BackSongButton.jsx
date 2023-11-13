@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
 
-export default function BackwardButton() {
+function BackSongButton({ clickBackSong }) {
   return (
-    <Button variant="secondary" size="icon">
+    <Button variant="secondary" size="icon" onClick={clickBackSong}>
       <Image
-        src="/button-backward.svg"
+        src="/button-back-song.svg"
         alt="play button"
         width={25}
         height={25}
@@ -14,3 +14,5 @@ export default function BackwardButton() {
     </Button>
   );
 }
+
+export default BackSongButton;
