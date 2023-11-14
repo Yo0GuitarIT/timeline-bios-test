@@ -49,9 +49,11 @@ function MainPage() {
     } else setPlaybackProgress((currentIntegerTime + 1) * (1 / 16) * 100);
   };
 
-  const [trackCount, setTrackCount] = useState(1); // 新增音軌數量的狀態
+
+  const [trackCount, setTrackCount] = useState(1); 
   const [tracks, setTracks] = useState([
     { id: 1, name: "Track 1", audio: "Have fun!" },
+    { id: 2, name: "Track 2", audio: "OK" },
   ]);
 
   const addTrack = () => {
